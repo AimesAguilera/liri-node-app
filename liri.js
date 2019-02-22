@@ -6,6 +6,9 @@ var Spotify = require('node-spotify-api');
 // var spotify = new Spotify(keys.spotify);
 
 
+
+//================================
+// Spotify API
 function findSong(song) {
 
     var spotify = new Spotify({
@@ -15,6 +18,13 @@ function findSong(song) {
 
     var songName = process.argv.slice(3);
     var song = songName.toString();
+
+    if (process.argv[3] === undefined) {
+        song = "Ace of Base The Sign";
+    } else {
+        song = songName;
+    }
+
     spotify
         .search({ type: 'track', query: song })
         .then(function (response) {
@@ -27,19 +37,6 @@ function findSong(song) {
             console.log(err);
         });
 
-    if (songName === null) {
-        spotify
-            .search({ type: 'track', query: 'The Sign' })
-            .then(function (response) {
-                console.log("Artist's name: " + response.tracks.items[0].album.artists[0].name);
-                console.log("Song name: " + response.tracks.items[0].name);
-                console.log("Album: " + response.tracks.items[0].album.name);
-                console.log("Spotify preview link for song: " + response.tracks.items[0].preview_url)
-            })
-            .catch(function (err) {
-                console.log(err);
-            });
-    }
 
 }
 
@@ -73,6 +70,12 @@ function findMovie(movieTitle) {
 
     var movieTitle = process.argv.slice(3);
 
+    if (process.argv[3] === undefined) {
+        movieTitle = "Mr. Nobody";
+    } else {
+        movieTitle = movieTitle;
+    };
+
     queryURL = "http://www.omdbapi.com/?t=" + movieTitle + "&y=&plot=short&apikey=trilogy"
 
     omdbAxios.get(queryURL).then(
@@ -91,22 +94,29 @@ function findMovie(movieTitle) {
 
     );
 
-    if (movieTitle === "undefined") {
-        movieTitle === 'Mr.Nobody'
-    }
 };
 
 //==========================================
 // DO WHAT IT SAYS INPUT FUNCTION
 var fs = require('fs')
 
-var file = require('./random.txt');
+// var file = require('./random.txt');
 
 function doWhatItSays() {
 
-    fs.readFile(file, 'utf8', function (err, data) {
-        if (err) throw err;
-        console.log(data.spotify)
+    fs.readFile('random.txt', 'utf8', function (err, data) {
+        if (err) {
+            return display(err);
+          }
+    
+        var dataArr = data.split(": ");
+        console.log(dataArr)
+        
+        if (dataArr[0] === 'spotify') {
+            
+          var songRandom = dataArr[1].trim();
+          findSong(songRandom);
+        }
     });
 }
 
