@@ -107,15 +107,32 @@ function doWhatItSays() {
     fs.readFile('random.txt', 'utf8', function (err, data) {
         if (err) {
             return display(err);
-          }
-    
+        }
+
         var dataArr = data.split(": ");
-        console.log(dataArr)
-        
+        // console.log(dataArr)
+
         if (dataArr[0] === 'spotify') {
-            
-          var songRandom = dataArr[1].trim();
-          findSong(songRandom);
+
+            var song = dataArr[1].trim();
+            // console.log(song)
+
+            var spotify = new Spotify({
+                id: "136ddb43f50c4b4fa488553612dc47f3",
+                secret: "0c1a6423ac934ac79208183bd3ff9829"
+            });
+
+            spotify
+                .search({ type: 'track', query: song })
+                .then(function (response) {
+                    console.log("Artist's name: " + response.tracks.items[0].album.artists[0].name);
+                    console.log("Song name: " + response.tracks.items[0].name);
+                    console.log("Album: " + response.tracks.items[0].album.name);
+                    console.log("Spotify preview link for song: " + response.tracks.items[0].preview_url)
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
         }
     });
 }
