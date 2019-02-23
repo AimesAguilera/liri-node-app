@@ -100,8 +100,6 @@ function findMovie(movieTitle) {
 // DO WHAT IT SAYS INPUT FUNCTION
 var fs = require('fs')
 
-// var file = require('./random.txt');
-
 function doWhatItSays() {
 
     fs.readFile('random.txt', 'utf8', function (err, data) {
