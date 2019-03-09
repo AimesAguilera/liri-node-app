@@ -35,4 +35,4 @@ _**node liri do-what-it-says**_ will get info from a random.txt file stored in t
 
 
 
-![JPG?!?!](https://github.com/AimesAguilea/node-liri-app/blob/master/screenshots/purchasecomplet.jpg)
+![JPG?!?!](https://github.com/AimesAguilea/liri-node-app/blob/master/screen-shots/spotify-working.JPG)
