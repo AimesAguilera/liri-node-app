@@ -31,3 +31,15 @@ _**node liri spotify "song-here"**_ to get song info from the Spotify api. If us
 _**node liri concert "artist/band-here"**_ to get concert info from the Bandsintown api.
 
 _**node liri do-what-it-says**_ will get info from a random.txt file stored in the repo.
+
+
+
+
+![JPG?!?!](https://github.com/AimesAguilea/liri-node-app/blob/master/screen-shots/spotify-working.JPG)
+
+![JPG?!?!](https://github.com/AimesAguilea/liri-node-app/blob/master/screen-shots/movie-working.JPG)
+
+![JPG?!?!](https://github.com/AimesAguilea/liri-node-app/blob/master/screen-shots/concert-working.JPG)
+
+![JPG?!?!](https://github.com/AimesAguilea/liri-node-app/blob/master/screen-shots/do-what-it-says-working.JPG)
+
